@@ -11,17 +11,17 @@ class FormPickerGroup extends Component {
 		super(props)
 
 		this.handleChange = this.handleChange.bind(this)
-		this.saveFormElement = this.saveFormElement.bind(this)
+		// this.saveFormElement = this.saveFormElement.bind(this)
 		this.state = { formSelectType: "text" }
 	}
 
 	handleChange(e) {
 		this.setState({ formSelectType: e.target.value })
+		this.props.updateFormType(this.props.id, e.target.value)
 	}
 
 	// saves the form element when you click off of the certain element
 	saveFormElement(e) {
-		this.props.updateFormType(this.props.id, this.state.formSelectType)
 	}
 
 	// literaly just made a button so if you pressed enter it wouldn't "submit"..
@@ -47,6 +47,8 @@ class FormPickerGroup extends Component {
 							>
 							<option value="text">Text</option>
 							<option value="textarea">Text Area</option>
+							<option value="checkbox">Checkbox</option>
+							<option value="radio">Radio Buttons</option>
 						</FormControl>
 						<button type="submit" onClick={this.preventInputSubmit} style={{display:"none"}} />
 					</FormGroup>

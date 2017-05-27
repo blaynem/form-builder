@@ -5,6 +5,7 @@ export default function formObjects(state = [{fieldType:"text",fieldData:""}], a
 		case CREATE_FORM_OBJECTS:
 			// // Trying to make it save anything that was previously entered, that way if they want 1 less element
 			// // but later decide they want to add that one back in, it'll be saved. Not sure how to do that though..
+			console.log(action)
 			return action.formObjects.map((object, i) => {
 				if (state[i] !== undefined){
 					return state[i]
@@ -18,6 +19,7 @@ export default function formObjects(state = [{fieldType:"text",fieldData:""}], a
 				return { fieldType: action.fieldType, fieldData: item.fieldData }
 			})
 		case UPDATE_FORM_DATA:
+			console.log(action)
 			return state.map((item, i) => {
 				if (i !== action.id) return item
 				return { fieldData: action.fieldData, fieldType: item.fieldType}

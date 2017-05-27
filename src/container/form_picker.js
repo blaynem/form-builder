@@ -12,7 +12,7 @@ class FormPicker extends Component {
 
 		this.onElementTotalChange = this.onElementTotalChange.bind(this)
 		this.onRenderButtonClick = this.onRenderButtonClick.bind(this)
-		this.state = { elements: 1, elementsToRender: 1 }
+		this.state = { elements: 1 }
 	}
 
 	// determines how many forms elements there should be
