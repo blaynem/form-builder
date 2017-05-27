@@ -50,17 +50,15 @@ class FormPicker extends Component {
 	render() {
 		return (
 			<div>
-				<Form horizontal>
-					<FormGroup>
-						<Col componentClass={ControlLabel} smOffset={2} sm={4}>How many form elements should your form have?</Col>
-						<Col sm={2}>
+				<Form inline style={{textAlign: "center"}}>
+					<FormGroup >
+						<ControlLabel style={{marginRight:"40px"}}>How many form elements should your form have?</ControlLabel>
 							<FormControl 
 								type="number" 
 								name="numberOfElements"
 								value={this.state.elements} 
 								onChange={this.onElementTotalChange} 
 								placeholder="Enter Number" />
-						</Col>
 						<Button type="submit" onClick={this.onRenderButtonClick}>Create</Button>
 					</FormGroup>
 				</Form>

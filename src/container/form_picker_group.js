@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
+import { Form, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { updateFormType } from '../actions';
@@ -34,9 +34,9 @@ class FormPickerGroup extends Component {
 
 		return (
 			<div>
-				<form>
+				<Form inline style={{marginBottom:"10px"}}>
 					<FormGroup>
-						<ControlLabel>Form {this.props.id + 1}</ControlLabel>
+						<ControlLabel style={{marginRight:"30px"}}>Form {this.props.id + 1}</ControlLabel>
 						<FormControl 
 							componentClass="select"
 							name="formSelectType"
@@ -52,8 +52,9 @@ class FormPickerGroup extends Component {
 						</FormControl>
 						<button type="submit" onClick={this.preventInputSubmit} style={{display:"none"}} />
 					</FormGroup>
-				</form>
+				</Form>
 				<FormType formTypeChoice={formSelectType} id={this.props.id}/>
+				<div style={{borderBottom:"1px solid #919191", width:"100%", margin:"auto", marginBottom:"10px"}}></div>
 			</div>
 		)
 	}

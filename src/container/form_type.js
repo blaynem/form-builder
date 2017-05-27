@@ -37,94 +37,99 @@ class FormType extends Component {
 	renderFormChoice(){
 		const { formTypeChoice } = this.props;
 
-		if (formTypeChoice === "text") {
-			return (
-				<div>
-					<FormControl 
-							type="text"
-							name="formInputValue"
-							value={this.state.formInputValue}
-							onChange={this.handleChange}
-							placeholder="Enter Text"
-							onBlur={this.saveFormElement}
-						/>
-					<button type="submit" onClick={this.preventInputSubmit} style={{display:"none"}} />
-				</div>
-			)
-		} else if (formTypeChoice === "textarea") {
-			return (
-				<div>
-					<FormControl 
-							type="text"
-							name="formInputValue"
-							componentClass="textarea"
-							value={this.state.formInputValue}
-							onChange={this.handleChange}
-							placeholder="Enter Text"
-							onBlur={this.saveFormElement}
-						/>
-					<button type="submit" onClick={this.preventInputSubmit} style={{display:"none"}} />
-				</div>
-			)
-		} else if (formTypeChoice === "checkbox") {
-			return (
-				<div>
-					<Checkbox
-						inline
-						name="checkbox1"
-						checked={this.state.checkbox1}
-						onChange={this.handleChange}>
-						1
-					</Checkbox>
-					{' '}
-					<Checkbox
-						inline
-						name="checkbox2"
-						checked={this.state.checkbox2}
-						onChange={this.handleChange}>
-						2
-					</Checkbox>
-					{' '}
-					<Checkbox
-						inline
-						name="checkbox3"
-						checked={this.state.checkbox3}
-						onChange={this.handleChange}>
-						3
-					</Checkbox>
-				</div>
-			)
-		} else if (formTypeChoice === "radio") {
-			return (
-				<div>
-					<Radio
-						inline
-						name="radioGroup"
-						value="option1"
-						checked={this.state.selectedRadio === "option1"}
-						onChange={this.handleChange}>
-		        1
-		      </Radio>
-		      {' '}
-		      <Radio
-		      	inline
-		      	name="radioGroup"
-		      	value="option2"
-		      	checked={this.state.selectedRadio === "option2"}
-		      	onChange={this.handleChange}>
-		        2
-		      </Radio>
-		      {' '}
-		      <Radio
-		      	inline
-		      	name="radioGroup"
-		      	value="option3"
-		      	checked={this.state.selectedRadio === "option3"}
-		      	onChange={this.handleChange}>
-		        3
-		      </Radio>
-				</div>
-			)
+		switch (formTypeChoice){
+			case "text":
+				return (
+					<div>
+						<FormControl 
+								type="text"
+								name="formInputValue"
+								value={this.state.formInputValue}
+								onChange={this.handleChange}
+								placeholder="Enter Text"
+								onBlur={this.saveFormElement}
+							/>
+						<button type="submit" onClick={this.preventInputSubmit} style={{display:"none"}} />
+					</div>
+				)
+			case "textarea":
+				return (
+					<div>
+						<FormControl 
+								type="text"
+								name="formInputValue"
+								componentClass="textarea"
+								value={this.state.formInputValue}
+								onChange={this.handleChange}
+								placeholder="Enter Text"
+								onBlur={this.saveFormElement}
+							/>
+						<button type="submit" onClick={this.preventInputSubmit} style={{display:"none"}} />
+					</div>
+				)
+			case "checkbox":
+			 return (
+					<div>
+						<Checkbox
+							inline
+							name="checkbox1"
+							checked={this.state.checkbox1}
+							onChange={this.handleChange}>
+							1
+						</Checkbox>
+						{' '}
+						<Checkbox
+							inline
+							name="checkbox2"
+							checked={this.state.checkbox2}
+							onChange={this.handleChange}>
+							2
+						</Checkbox>
+						{' '}
+						<Checkbox
+							inline
+							name="checkbox3"
+							checked={this.state.checkbox3}
+							onChange={this.handleChange}>
+							3
+						</Checkbox>
+					</div>
+				)
+		 	case "radio":
+			 	return (
+					<div>
+						<Radio
+							inline
+							name="radioGroup"
+							value="option1"
+							checked={this.state.selectedRadio === "option1"}
+							onChange={this.handleChange}>
+			        1
+			      </Radio>
+			      {' '}
+			      <Radio
+			      	inline
+			      	name="radioGroup"
+			      	value="option2"
+			      	checked={this.state.selectedRadio === "option2"}
+			      	onChange={this.handleChange}>
+			        2
+			      </Radio>
+			      {' '}
+			      <Radio
+			      	inline
+			      	name="radioGroup"
+			      	value="option3"
+			      	checked={this.state.selectedRadio === "option3"}
+			      	onChange={this.handleChange}>
+			        3
+			      </Radio>
+					</div>
+				)
+			default:
+				return (
+					<div>Choose</div>
+				)
 		}
 	}
 
@@ -132,7 +137,7 @@ class FormType extends Component {
 		console.log(this.props)
 		return (
 			<form>
-				<FormGroup>
+				<FormGroup style={{marginBottom:"10px"}}>
 					{this.renderFormChoice()}
 				</FormGroup>
 			</form>
