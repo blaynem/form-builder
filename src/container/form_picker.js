@@ -61,7 +61,7 @@ class FormPicker extends Component {
 								onChange={this.onElementTotalChange} 
 								placeholder="Enter Number" />
 						</Col>
-						<Button type="submit" onClick={this.onRenderButtonClick}>Submit</Button>
+						<Button type="submit" onClick={this.onRenderButtonClick}>Create</Button>
 					</FormGroup>
 				</Form>
 				{this.renderForms()}

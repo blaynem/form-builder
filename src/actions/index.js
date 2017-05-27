@@ -1,7 +1,9 @@
 export const CREATE_FORM_OBJECTS = "CREATE_FORM_OBJECTS"
+export const UPDATE_FORM_TYPE = "UPDATE_FORM_TYPE"
+export const UPDATE_FORM_DATA = "UPDATE_FORM_DATA";
 
-export const UPDATE_FORM = "UPDATE_FORM";
-
+// the form objects are just a bunch of empty objects.. really need to figure out
+// a better way to create these.
 export function createFormObjects(formObjects){
 	return {
 		type: CREATE_FORM_OBJECTS,
@@ -9,10 +11,18 @@ export function createFormObjects(formObjects){
 	}
 }
 
-export function updateForm(id, text){
+export function updateFormType(id, fieldType){
 	return {
-		type: UPDATE_FORM,
+		type: UPDATE_FORM_TYPE,
 		id,
-		text
+		fieldType
+	}
+}
+
+export function updateFormData(id, fieldData){
+	return {
+		type: UPDATE_FORM_DATA,
+		id,
+		fieldData
 	}
 }

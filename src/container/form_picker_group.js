@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { FormGroup, ControlLabel, FormControl, Checkbox, Radio } from 'react-bootstrap';
+import { FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { updateForm } from '../actions';
+import { updateFormType } from '../actions';
 
+import FormType from './form_type';
 
 class FormPickerGroup extends Component {
 	constructor(props){
@@ -11,21 +12,16 @@ class FormPickerGroup extends Component {
 
 		this.handleChange = this.handleChange.bind(this)
 		this.saveFormElement = this.saveFormElement.bind(this)
-		this.state = { formInputValue: "", formSelectType: "text" }
+		this.state = { formSelectType: "text" }
 	}
 
 	handleChange(e) {
-		const target = e.target
-		const name = target.name
-
-		console.log("target", target)
-		console.log("name", name)
-		this.setState({ [name]: e.target.value })
+		this.setState({ formSelectType: e.target.value })
 	}
 
 	// saves the form element when you click off of the certain element
 	saveFormElement(e) {
-		this.props.updateForm(this.props.id, this.state.formInputValue)
+		this.props.updateFormType(this.props.id, this.state.formSelectType)
 	}
 
 	// literaly just made a button so if you pressed enter it wouldn't "submit"..
@@ -33,60 +29,40 @@ class FormPickerGroup extends Component {
 		e.preventDefault()
 	}
 
-	renderFormChoice(){
-		if (this.state.formSelectType === "text") {
-			return (
-				<div>
-					<FormControl 
-							type="text"
-							name="formInputValue"
-							value={this.state.formInputValue}
-							onChange={this.handleChange}
-							placeholder="Enter Text"
-							onBlur={this.saveFormElement}
-						/>
-					<button type="submit" onClick={this.preventInputSubmit} style={{display:"none"}} />
-				</div>
-			)
-		}
-	}
-
 	render() {
+		const { formSelectType } = this.state;
+
 		return (
 			<div>
-			<form>
-				<FormGroup>
-					<ControlLabel>Form {this.props.id + 1}</ControlLabel>
-					<FormControl 
-						componentClass="select"
-						name="formSelectType"
-						placeholder="select3"
-						value={this.state.formSelectType}
-						onChange={this.handleChange}
-						>
-						<option value="text">Text</option>
-						<option value="select">Select</option>
-						<option value="select3">farts</option>
-					</FormControl>
-					<button type="submit" onClick={this.preventInputSubmit} style={{display:"none"}} />
-				</FormGroup>
-			</form>
-			<form>
-				<FormGroup>
-					{this.renderFormChoice()}
-				</FormGroup>
-			</form>
+				<form>
+					<FormGroup>
+						<ControlLabel>Form {this.props.id + 1}</ControlLabel>
+						<FormControl 
+							componentClass="select"
+							name="formSelectType"
+							placeholder="select3"
+							value={formSelectType}
+							onChange={this.handleChange}
+							onBlur={this.saveFormElement}
+							>
+							<option value="text">Text</option>
+							<option value="textarea">Text Area</option>
+						</FormControl>
+						<button type="submit" onClick={this.preventInputSubmit} style={{display:"none"}} />
+					</FormGroup>
+				</form>
+				<FormType formTypeChoice={formSelectType} id={this.props.id}/>
 			</div>
 		)
 	}
 }
 
-function mapStateToProps(state){
-	return { formObjects: state.formObjects }
-}
+// function mapStateToProps(state){
+// 	return { formObjects: state.formObjects }
+// }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ updateForm }, dispatch)
+  return bindActionCreators({ updateFormType }, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(FormPickerGroup);
+export default connect(null, mapDispatchToProps)(FormPickerGroup);
