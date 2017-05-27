@@ -1,6 +1,6 @@
 import { CREATE_FORM_OBJECTS, UPDATE_FORM_NAME, UPDATE_FORM_TYPE, UPDATE_FORM_DATA } from '../actions'
 
-export default function formObjects(state = [{fieldType:"text",fieldData:""}, {fieldType:"text",fieldData:""}, {fieldType:"text",fieldData:""}], action){
+export default function formObjects(state = [], action){
 	switch(action.type) {
 		case CREATE_FORM_OBJECTS:
 			// // Trying to make it save anything that was previously entered, that way if they want 1 less element

@@ -12,7 +12,7 @@ class FormPicker extends Component {
 
 		this.onElementTotalChange = this.onElementTotalChange.bind(this)
 		this.onRenderButtonClick = this.onRenderButtonClick.bind(this)
-		this.state = { elements: 3 }
+		this.state = { elements: 0 }
 	}
 
 	// determines how many forms elements there should be
@@ -34,7 +34,7 @@ class FormPicker extends Component {
 
 		// theres probably a better way to do this, but for now.. this is it.
 		while (i < amount){
-			formsArray.push({})
+			formsArray.push({fieldName: `Form ${i}`, fieldType:"text", fieldData:""})
 			i++
 		}
 
