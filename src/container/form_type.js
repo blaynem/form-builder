@@ -12,13 +12,18 @@ class FormType extends Component {
 		this.handleChange = this.handleChange.bind(this)
 		this.saveFormElement = this.saveFormElement.bind(this)
 		this.state = { formInputValue: "",
-		checkbox1: false, checkbox2: true, checkbox3: false,
-		selectedRadio: "option3"}
+			checkbox1: false,
+			checkbox2: true,
+			checkbox3: false,
+			selectedRadio: "option3"
+		}
 	}
 
+	// handles change
 	handleChange(e) {
 		const target = e.target
 		const name = target.name
+		// checks if the targets name is radioGroup, if it's sets the selectedRadio
 		if (name === "radioGroup"){ this.setState({ selectedRadio: target.value })}
 		const value = target.type === 'checkbox' ? target.checked : target.value
 		this.setState({ [name]: value })

@@ -1,4 +1,4 @@
-import { CREATE_FORM_OBJECTS, UPDATE_FORM_TYPE, UPDATE_FORM_DATA } from '../actions'
+import { CREATE_FORM_OBJECTS, UPDATE_FORM_NAME, UPDATE_FORM_TYPE, UPDATE_FORM_DATA } from '../actions'
 
 export default function formObjects(state = [{fieldType:"text",fieldData:""}, {fieldType:"text",fieldData:""}, {fieldType:"text",fieldData:""}], action){
 	switch(action.type) {
@@ -10,19 +10,25 @@ export default function formObjects(state = [{fieldType:"text",fieldData:""}, {f
 				if (state[i] !== undefined){
 					return state[i]
 				}
-				return { fieldType: "text", fieldData: "" }
+				return { fieldType: "text", fieldData: "", fieldName: "" }
+			})
+		case UPDATE_FORM_NAME:
+			console.log(action)
+			return state.map((item, i) => {
+				if (i !== action.id) return item
+				return { fieldName: action.fieldName, fieldType: item.fieldType, fieldData: item.fieldData }
 			})
 		case UPDATE_FORM_TYPE:
 			console.log(action)
 			return state.map((item, i) => {
 				if (i !== action.id) return item
-				return { fieldType: action.fieldType, fieldData: item.fieldData }
+				return { fieldType: action.fieldType, fieldData: item.fieldData, fieldName: item.fieldName }
 			})
 		case UPDATE_FORM_DATA:
 			console.log(action)
 			return state.map((item, i) => {
 				if (i !== action.id) return item
-				return { fieldData: action.fieldData, fieldType: item.fieldType}
+				return { fieldData: action.fieldData, fieldType: item.fieldType, fieldName: item.fieldName }
 			})
 		default:
 			return state

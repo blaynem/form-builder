@@ -1,0 +1,4 @@
+.formNamePlaceholder::-webkit-input-placeholder {
+		color: black;
+		box-shadow: none;
+}

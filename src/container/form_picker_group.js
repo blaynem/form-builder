@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Form, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { updateFormType } from '../actions';
+import { updateFormName, updateFormType } from '../actions';
 
 import FormType from './form_type';
 
@@ -11,17 +11,26 @@ class FormPickerGroup extends Component {
 		super(props)
 
 		this.handleChange = this.handleChange.bind(this)
-		// this.saveFormElement = this.saveFormElement.bind(this)
-		this.state = { formSelectType: "text" }
+		this.saveFormElement = this.saveFormElement.bind(this)
+		this.state = { formSelectType: "text", formName: `Form ${this.props.id + 1}` }
 	}
 
 	handleChange(e) {
-		this.setState({ formSelectType: e.target.value })
-		this.props.updateFormType(this.props.id, e.target.value)
+		const { id } = this.props
+		const target = e.target
+		const name = target.name
+
+		// changes state of input 
+		this.setState({ [name]: target.value })
+		// returns if its the formName element, so it won't send action to store
+		// every click of the key.
+		if (name === "formName") return
+		this.props.updateFormType(id, target.value)
 	}
 
 	// saves the form element when you click off of the certain element
 	saveFormElement(e) {
+		this.props.updateFormName(this.props.id, e.target.value)
 	}
 
 	// literaly just made a button so if you pressed enter it wouldn't "submit"..
@@ -36,14 +45,22 @@ class FormPickerGroup extends Component {
 			<div>
 				<Form inline style={{marginBottom:"10px"}}>
 					<FormGroup>
-						<ControlLabel style={{marginRight:"30px"}}>Form {this.props.id + 1}</ControlLabel>
+						<ControlLabel style={{marginRight:"30px"}}>
+							<FormControl
+								className="formNamePlaceholder"
+								style={{border:"none", color:"black"}}
+								name="formName"
+								type="text" 
+								value={this.state.formName}
+								onChange={this.handleChange}
+								onBlur={this.saveFormElement} />
+						</ControlLabel>
 						<FormControl 
 							componentClass="select"
 							name="formSelectType"
 							placeholder="select3"
 							value={formSelectType}
 							onChange={this.handleChange}
-							onBlur={this.saveFormElement}
 							>
 							<option value="text">Text</option>
 							<option value="textarea">Text Area</option>
@@ -65,7 +82,7 @@ class FormPickerGroup extends Component {
 // }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ updateFormType }, dispatch)
+  return bindActionCreators({ updateFormName, updateFormType }, dispatch)
 }
 
 export default connect(null, mapDispatchToProps)(FormPickerGroup);

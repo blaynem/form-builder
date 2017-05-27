@@ -12,7 +12,7 @@ class FormPicker extends Component {
 
 		this.onElementTotalChange = this.onElementTotalChange.bind(this)
 		this.onRenderButtonClick = this.onRenderButtonClick.bind(this)
-		this.state = { elements: 1 }
+		this.state = { elements: 3 }
 	}
 
 	// determines how many forms elements there should be
@@ -24,6 +24,7 @@ class FormPicker extends Component {
 		this.setState({ elements: value })
 	}
 
+	// when you press the 'create' button it'll render all the form elements
 	onRenderButtonClick(e){
 		e.preventDefault()
 
@@ -50,7 +51,7 @@ class FormPicker extends Component {
 	render() {
 		return (
 			<div>
-				<Form inline style={{textAlign: "center"}}>
+				<Form inline style={{textAlign: "center", marginBottom:"30px"}}>
 					<FormGroup >
 						<ControlLabel style={{marginRight:"40px"}}>How many form elements should your form have?</ControlLabel>
 							<FormControl 
