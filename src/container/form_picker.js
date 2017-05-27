@@ -26,7 +26,6 @@ class FormPicker extends Component {
 
 	onRenderButtonClick(e){
 		e.preventDefault()
-		const { elements } = this.state
 
 		let amount = this.state.elements
 		let i = 0
@@ -44,7 +43,7 @@ class FormPicker extends Component {
 
 	renderForms(){
 		return this.props.formObjects.map((forms, i) => {
-			return <FormPickerGroup key={i} id={"form"+i}/>
+			return <FormPickerGroup key={i} id={i}/>
 		})
 	}
 
@@ -62,7 +61,7 @@ class FormPicker extends Component {
 								onChange={this.onElementTotalChange} 
 								placeholder="Enter Number" />
 						</Col>
-						<Button type="button" onClick={this.onRenderButtonClick}>Submit</Button>
+						<Button type="submit" onClick={this.onRenderButtonClick}>Submit</Button>
 					</FormGroup>
 				</Form>
 				{this.renderForms()}
