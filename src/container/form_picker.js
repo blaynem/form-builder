@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { createFormObjects } from '../actions';
-import { Col, FormControl, Form, ControlLabel, FormGroup, Button } from 'react-bootstrap';
+import { FormControl, Form, ControlLabel, FormGroup, Button } from 'react-bootstrap';
 
 import FormPickerGroup from './form_picker_group';
 

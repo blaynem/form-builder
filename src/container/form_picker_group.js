@@ -12,7 +12,7 @@ class FormPickerGroup extends Component {
 
 		this.handleChange = this.handleChange.bind(this)
 		this.saveFormElement = this.saveFormElement.bind(this)
-		this.state = { formSelectType: "text", formName: `Form ${this.props.id + 1}` }
+		this.state = { formSelectType: "text", formName: `Form ${this.props.id + 1}`, labels: "barbie; steve" }
 	}
 
 	handleChange(e) {
@@ -24,7 +24,7 @@ class FormPickerGroup extends Component {
 		this.setState({ [name]: target.value })
 		// returns if its the formName element, so it won't send action to store
 		// every click of the key.
-		if (name === "formName") return
+		if (name === "formName" || name === "labels") return
 		this.props.updateFormType(id, target.value)
 	}
 
@@ -36,6 +36,29 @@ class FormPickerGroup extends Component {
 	// literaly just made a button so if you pressed enter it wouldn't "submit"..
 	preventInputSubmit(e) {
 		e.preventDefault()
+	}
+
+	// if the it's a checkbox or radio tye, will return the box asking how many of checkbox/radio buttons should be rendered
+	renderHowManyRow(){
+		if (this.state.formSelectType === "checkbox" || this.state.formSelectType === "radio"){
+			return (
+				<div>
+					<FormGroup>
+						<ControlLabel style={{marginRight:"20px"}}>
+							<h4>Labels (separate lables by a semi-colon)</h4>
+						</ControlLabel>
+						<FormControl
+								name="labels"
+								type="text" 
+								value={this.state.labels}
+								onChange={this.handleChange}
+								onBlur={this.saveFormElement} />
+						<button type="submit" onClick={this.preventInputSubmit} style={{display:"none"}} />
+					</FormGroup>
+				</div>
+			)
+		}
+		return
 	}
 
 	render() {
@@ -67,10 +90,10 @@ class FormPickerGroup extends Component {
 							<option value="checkbox">Checkbox</option>
 							<option value="radio">Radio Buttons</option>
 						</FormControl>
-						<button type="submit" onClick={this.preventInputSubmit} style={{display:"none"}} />
 					</FormGroup>
+						{this.renderHowManyRow()}
 				</Form>
-				<FormType formTypeChoice={formSelectType} id={this.props.id}/>
+				<FormType formTypeChoice={formSelectType} id={this.props.id} labels={this.state.labels}/>
 				<div style={{borderBottom:"1px solid #919191", width:"100%", margin:"auto", marginBottom:"10px"}}></div>
 			</div>
 		)

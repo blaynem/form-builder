@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { updateFormData } from '../actions';
 
+import FormCheckbox from './form_checkbox';
 
 class FormType extends Component {
 	constructor(props){
@@ -54,7 +55,7 @@ class FormType extends Component {
 								placeholder="Enter Text"
 								onBlur={this.saveFormElement}
 							/>
-						<button type="submit" onClick={this.preventInputSubmit} style={{display:"none"}} />
+							<button type="submit" onClick={this.preventInputSubmit} style={{display:"none"}} />
 					</div>
 				)
 			case "textarea":
@@ -74,35 +75,11 @@ class FormType extends Component {
 				)
 			case "checkbox":
 			 return (
-					<div>
-						<Checkbox
-							inline
-							name="checkbox1"
-							checked={this.state.checkbox1}
-							onChange={this.handleChange}>
-							1
-						</Checkbox>
-						{' '}
-						<Checkbox
-							inline
-							name="checkbox2"
-							checked={this.state.checkbox2}
-							onChange={this.handleChange}>
-							2
-						</Checkbox>
-						{' '}
-						<Checkbox
-							inline
-							name="checkbox3"
-							checked={this.state.checkbox3}
-							onChange={this.handleChange}>
-							3
-						</Checkbox>
-					</div>
+					<FormCheckbox labels={this.props.labels}/>
 				)
 		 	case "radio":
 			 	return (
-					<div>
+			 		<div>
 						<Radio
 							inline
 							name="radioGroup"
@@ -129,7 +106,7 @@ class FormType extends Component {
 			      	onChange={this.handleChange}>
 			        3
 			      </Radio>
-					</div>
+			      </div>
 				)
 			default:
 				return (
@@ -139,7 +116,6 @@ class FormType extends Component {
 	}
 
 	render() {
-		console.log(this.props)
 		return (
 			<form>
 				<FormGroup style={{marginBottom:"10px"}}>
