@@ -1,6 +1,6 @@
 import { CREATE_FORM_OBJECTS, UPDATE_FORM_NAME, UPDATE_FORM_TYPE, UPDATE_FORM_DATA } from '../actions'
 
-export default function formObjects(state = [{}, {}], action){
+export default function formObjects(state = [], action){
 	switch(action.type) {
 		case CREATE_FORM_OBJECTS:
 			// // Trying to make it save anything that was previously entered, that way if they want 1 less element
@@ -13,19 +13,19 @@ export default function formObjects(state = [{}, {}], action){
 				return { fieldType: "text", fieldData: "", fieldName: "" }
 			})
 		case UPDATE_FORM_NAME:
-			console.log(action)
+			console.log("UPDATE_FORM_NAME",action)
 			return state.map((item, i) => {
 				if (i !== action.id) return item
 				return { fieldName: action.fieldName, fieldType: item.fieldType, fieldData: item.fieldData }
 			})
 		case UPDATE_FORM_TYPE:
-			console.log(action)
+			console.log("UPDATE_FORM_TYPE",action)
 			return state.map((item, i) => {
 				if (i !== action.id) return item
 				return { fieldType: action.fieldType, fieldData: item.fieldData, fieldName: item.fieldName }
 			})
 		case UPDATE_FORM_DATA:
-			console.log(action)
+			console.log("UPDATE_FORM_DATA",action)
 			return state.map((item, i) => {
 				if (i !== action.id) return item
 				return { fieldData: action.fieldData, fieldType: item.fieldType, fieldName: item.fieldName }

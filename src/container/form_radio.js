@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { Checkbox } from 'react-bootstrap';
+import { Radio } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { updateFormData } from '../actions';
 
 
-class FormCheckbox extends Component {
+class FormRadio extends Component {
 	constructor(props){
 		super(props)
 
@@ -13,15 +13,14 @@ class FormCheckbox extends Component {
 		// keep in mind, the state does literally nothing but show you what is selected
 		// and to give a decent user experience. If this didn't allow something to be clicked,
 		// the user would think something was wrong.
-		this.state = {}
+		this.state = { selectedRadio: null}
 	}
 
 	// handles changes to the checkbox
 	handleChange(e) {
 		const target = e.target
-		const name = target.name
-		// allows me to push new key/values depending on what the user has selected to input
-		this.setState({ [name]: target.checked })
+		// sets state of selected radio to target.value
+		this.setState({ selectedRadio: target.value })
 	}
 
 	// renders all the checkboxes depending on how many items are in this.props.labels (props originate in form_picker_group)
@@ -32,15 +31,15 @@ class FormCheckbox extends Component {
 				label = "Empty"
 			}
 			return (
-				<Checkbox
-					key={label + index}
+				<Radio
 					inline
+					key={label + index}
 					name={label}
-					// checked doesn't actually do anything..?
-					// checked={this.state.checkbox}
+					value={label}
+					checked={this.state.selectedRadio === label}
 					onChange={this.handleChange}>
-					{label}
-				</Checkbox>
+				  {label}
+				</Radio>
 			)
 		})
 	}
@@ -58,4 +57,4 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({ updateFormData }, dispatch)
 }
 
-export default connect(null, mapDispatchToProps)(FormCheckbox);
+export default connect(null, mapDispatchToProps)(FormRadio);

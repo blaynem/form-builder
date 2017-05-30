@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { FormGroup, FormControl, Checkbox, Radio } from 'react-bootstrap';
+import { FormGroup, FormControl } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { updateFormData } from '../actions';
 
 import FormCheckbox from './form_checkbox';
+import FormRadio from './form_radio';
 
 class FormType extends Component {
 	constructor(props){
@@ -79,34 +80,7 @@ class FormType extends Component {
 				)
 		 	case "radio":
 			 	return (
-			 		<div>
-						<Radio
-							inline
-							name="radioGroup"
-							value="option1"
-							checked={this.state.selectedRadio === "option1"}
-							onChange={this.handleChange}>
-			        1
-			      </Radio>
-			      {' '}
-			      <Radio
-			      	inline
-			      	name="radioGroup"
-			      	value="option2"
-			      	checked={this.state.selectedRadio === "option2"}
-			      	onChange={this.handleChange}>
-			        2
-			      </Radio>
-			      {' '}
-			      <Radio
-			      	inline
-			      	name="radioGroup"
-			      	value="option3"
-			      	checked={this.state.selectedRadio === "option3"}
-			      	onChange={this.handleChange}>
-			        3
-			      </Radio>
-			      </div>
+			 		<FormRadio labels={this.props.labels}/>
 				)
 			default:
 				return (

@@ -13,7 +13,6 @@ export function createFormObjects(formObjects){
 }
 
 export function updateFormName(id, fieldName) {
-	console.log("uh", id, fieldName)
 	return {
 		type: UPDATE_FORM_NAME,
 		id,
