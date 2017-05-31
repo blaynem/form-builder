@@ -48,27 +48,28 @@ class FormPickerGroup extends Component {
 		e.preventDefault()
 	}
 
-	// if the it's a checkbox or radio tye, will return the box asking how many of checkbox/radio buttons should be rendered
+	// if the it's either the text or textarea type, will return nothing
+	// otherwise will render the box to input checkbox/radio/select buttons
 	renderHowManyRow(){
-		if (this.state.formSelectType === "checkbox" || this.state.formSelectType === "radio"){
-			return (
-				<div>
-					<FormGroup>
-						<ControlLabel style={{marginRight:"20px"}}>
-							<h4>Labels (separate lables by a semi-colon)</h4>
-						</ControlLabel>
-						<FormControl
-								name="labels"
-								type="text" 
-								value={this.state.labels}
-								onChange={this.handleChange}
-								onBlur={this.saveFormElement} />
-						<button type="submit" onClick={this.preventInputSubmit} style={{display:"none"}} />
-					</FormGroup>
-				</div>
-			)
+		if (this.state.formSelectType === "text" || this.state.formSelectType === "textarea"){
+			return
 		}
-		return
+		return (
+			<div>
+				<FormGroup>
+					<ControlLabel style={{marginRight:"20px"}}>
+						<h4>Labels (separate lables by a semi-colon)</h4>
+					</ControlLabel>
+					<FormControl
+							name="labels"
+							type="text" 
+							value={this.state.labels}
+							onChange={this.handleChange}
+							onBlur={this.saveFormElement} />
+					<button type="submit" onClick={this.preventInputSubmit} style={{display:"none"}} />
+				</FormGroup>
+			</div>
+		)
 	}
 
 	render() {
@@ -97,6 +98,7 @@ class FormPickerGroup extends Component {
 							>
 							<option value="text">Text</option>
 							<option value="textarea">Text Area</option>
+							<option value="select">Select Dropdown</option>
 							<option value="checkbox">Checkbox</option>
 							<option value="radio">Radio Buttons</option>
 						</FormControl>

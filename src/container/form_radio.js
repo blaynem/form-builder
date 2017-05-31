@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
 import { Radio } from 'react-bootstrap';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { updateFormData } from '../actions';
-
 
 class FormRadio extends Component {
 	constructor(props){
@@ -24,7 +20,7 @@ class FormRadio extends Component {
 	}
 
 	// renders all the checkboxes depending on how many items are in this.props.labels (props originate in form_picker_group)
-	renderCheckboxes(){
+	renderRadioButtons(){
 		const labels = this.props.labels.split(";")
 		return labels.map((label, index) => {
 			if (label === "" || label === " "){
@@ -47,14 +43,10 @@ class FormRadio extends Component {
 	render() {
 		return (
 			<div>
-				{this.renderCheckboxes()}
+				{this.renderRadioButtons()}
 			</div>
 		)
 	}
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ updateFormData }, dispatch)
-}
-
-export default connect(null, mapDispatchToProps)(FormRadio);
+export default FormRadio;

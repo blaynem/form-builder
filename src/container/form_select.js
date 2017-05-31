@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Checkbox } from 'react-bootstrap';
+import { FormControl } from 'react-bootstrap';
 
-class FormCheckbox extends Component {
+class FormSelect extends Component {
 	constructor(props){
 		super(props)
 
@@ -9,32 +9,25 @@ class FormCheckbox extends Component {
 		// keep in mind, the state does literally nothing but show you what is selected
 		// and to give a decent user experience. If this didn't allow something to be clicked,
 		// the user would think something was wrong.
-		this.state = {}
+		this.state = { selectChoice: "select"}
 	}
 
 	// handles changes to the checkbox
 	handleChange(e) {
 		const target = e.target
-		const name = target.name
-		// allows me to push new key/values depending on what the user has selected to input
-		this.setState({ [name]: target.checked })
+		// sets state of selected radio to target.value
+		this.setState({ selectChoice: target.value })
 	}
 
 	// renders all the checkboxes depending on how many items are in this.props.labels (props originate in form_picker_group)
-	renderCheckboxes(){
+	renderSelectOptions(){
 		const labels = this.props.labels.split(";")
 		return labels.map((label, index) => {
 			if (label === "" || label === " "){
 				label = "Empty"
 			}
 			return (
-				<Checkbox
-					key={label + index}
-					inline
-					name={label}
-					onChange={this.handleChange}>
-					{label}
-				</Checkbox>
+					<option key={label + index} value={label}>{label}</option>
 			)
 		})
 	}
@@ -42,10 +35,18 @@ class FormCheckbox extends Component {
 	render() {
 		return (
 			<div>
-				{this.renderCheckboxes()}
+				<FormControl 
+					componentClass="select"
+					name="selectChoice"
+					placeholder="select"
+					value={this.state.selectChoice}
+					onChange={this.handleChange}
+					>
+				{this.renderSelectOptions()}
+				</FormControl>
 			</div>
 		)
 	}
 }
 
-export default FormCheckbox;
+export default FormSelect;

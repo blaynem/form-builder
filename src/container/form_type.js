@@ -6,6 +6,7 @@ import { updateFormData } from '../actions';
 
 import FormCheckbox from './form_checkbox';
 import FormRadio from './form_radio';
+import FormSelect from './form_select';
 
 class FormType extends Component {
 	constructor(props){
@@ -13,22 +14,14 @@ class FormType extends Component {
 
 		this.handleChange = this.handleChange.bind(this)
 		this.saveFormElement = this.saveFormElement.bind(this)
-		this.state = { formInputValue: "",
-			checkbox1: false,
-			checkbox2: true,
-			checkbox3: false,
-			selectedRadio: "option3"
-		}
+		this.state = { formInputValue: "" }
 	}
 
 	// handles change
 	handleChange(e) {
 		const target = e.target
 		const name = target.name
-		// checks if the targets name is radioGroup, if it's sets the selectedRadio
-		if (name === "radioGroup"){ this.setState({ selectedRadio: target.value })}
-		const value = target.type === 'checkbox' ? target.checked : target.value
-		this.setState({ [name]: value })
+		this.setState({ [name]: target.value })
 	}
 
 	// saves the form element when you click off of the certain element
@@ -53,7 +46,7 @@ class FormType extends Component {
 								name="formInputValue"
 								value={this.state.formInputValue}
 								onChange={this.handleChange}
-								placeholder="Enter Text"
+								placeholder="This text will not be saved"
 								onBlur={this.saveFormElement}
 							/>
 							<button type="submit" onClick={this.preventInputSubmit} style={{display:"none"}} />
@@ -68,7 +61,7 @@ class FormType extends Component {
 								componentClass="textarea"
 								value={this.state.formInputValue}
 								onChange={this.handleChange}
-								placeholder="Enter Text"
+								placeholder="This text will not be saved"
 								onBlur={this.saveFormElement}
 							/>
 						<button type="submit" onClick={this.preventInputSubmit} style={{display:"none"}} />
@@ -81,6 +74,10 @@ class FormType extends Component {
 		 	case "radio":
 			 	return (
 			 		<FormRadio labels={this.props.labels}/>
+				)
+			case "select":
+				return (
+					<FormSelect labels={this.props.labels} />
 				)
 			default:
 				return (
