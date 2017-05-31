@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Jumbotron } from 'react-bootstrap';
 
 import FormPicker from './form_picker';
+import WellCode from '../components/well_code';
 
 class App extends Component {
   render() {
@@ -14,6 +15,9 @@ class App extends Component {
           <div className="col-xs-12">
             <FormPicker />
           </div>
+        </div>
+        <div className="row">
+          <WellCode />
         </div>
       </div>
     );

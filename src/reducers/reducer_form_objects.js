@@ -1,6 +1,10 @@
 import { CREATE_FORM_OBJECTS, UPDATE_FORM_NAME, UPDATE_FORM_TYPE, UPDATE_FORM_DATA } from '../actions'
 
-export default function formObjects(state = [{ fieldType: "text", fieldData: "", fieldName: "" }, { fieldType: "text", fieldData: "", fieldName: "" }], action){
+const initialState = [{"fieldName":"What do you like?","fieldType":"select","fieldData":"things;stuff;friends"},
+{"fieldData":"","fieldType":"text","fieldName":"This is form2"},
+{"fieldData":"what;the;heck","fieldType":"checkbox","fieldName":"Haha form 3"}]
+
+export default function formObjects(state = initialState, action){
 	switch(action.type) {
 		case CREATE_FORM_OBJECTS:
 			// // Trying to make it save anything that was previously entered, that way if they want 1 less element
