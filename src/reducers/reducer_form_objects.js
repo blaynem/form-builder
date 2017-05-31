@@ -1,8 +1,6 @@
 import { CREATE_FORM_OBJECTS, UPDATE_FORM_NAME, UPDATE_FORM_TYPE, UPDATE_FORM_DATA } from '../actions'
 
-const initialState = [{"fieldName":"What do you like?","fieldType":"select","fieldData":"things;stuff;friends"},
-{"fieldData":"","fieldType":"text","fieldName":"This is form2"},
-{"fieldData":"what;the;heck","fieldType":"checkbox","fieldName":"Haha form 3"}]
+const initialState = []
 
 export default function formObjects(state = initialState, action){
 	switch(action.type) {
