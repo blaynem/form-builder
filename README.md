@@ -2,7 +2,16 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 # Form-Builder
 
-Will create forms depending on what fields are chosen. Will then generate a way to copy and paste the component into a persons code. You can test it out in action here.
+Generates a form component depending on what choices you have selected and input.
+You can test it out in action **[here](http://blayneformbuilder.surge.sh/)**.
+
+## Todo
+
+- Add ability to choose if you want to use react-bootstrap or not.
+- Debugging with radio/checkboxes
+- Disclaimer about spaces before/after semi-colon on value input.
+- Clean up the code, need to figure out how to remove the comma's, and ideally fix spacing.
+- Style it up so you can import some styles.
 
 ### Disclaimer
 

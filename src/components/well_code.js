@@ -41,9 +41,9 @@ class WellCode extends Component {
 			const selectForm = (
 				`<FormControl 
 					componentClass="select"
-					name="selectChoice"
+					name="selectChoice${i}"
 					placeholder="select"
-					value={this.state.selectChoice}
+					value={this.state.selectChoice${i}}
 					onChange={this.handleChange}
 					>
 				${item.fieldData.split(";").map((data) => {
@@ -56,9 +56,9 @@ class WellCode extends Component {
 			const radioForm = item.fieldData.split(";").map((data) => {
 					return `<Radio
 						inline
-						name="selectedRadio"
+						name="selectedRadio${i}"
 						value="${data}"
-						checked={this.state.selectedRadio === "${data}"}
+						checked={this.state.selectedRadio${i} === "${data}"}
 						onChange={this.handleChange}>
 					  ${data}
 					</Radio>
@@ -120,7 +120,7 @@ class WellCode extends Component {
     const target = e.target
     const name = target.name
     // if the type is radio, will set the state of selectedRadio
-    if (target.type === "radio"){ return this.setState({ selectedRadio: target.value }) }
+    if (target.type === "radio"){ return this.setState({ [name] : target.value }) }
     const value = target.type === "checkbox" ? target.checked : target.value
     // allows me to push new key/values depending on what the user has selected to input
     this.setState({ [name]: value })
