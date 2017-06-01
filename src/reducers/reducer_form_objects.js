@@ -1,10 +1,6 @@
 import { CREATE_FORM_OBJECTS, UPDATE_FORM_NAME, UPDATE_FORM_TYPE, UPDATE_FORM_DATA } from '../actions'
 
-<<<<<<< HEAD
 const initialState = []
-=======
-const initialState = []
->>>>>>> uh-test
 
 export default function formObjects(state = initialState, action){
 	switch(action.type) {
