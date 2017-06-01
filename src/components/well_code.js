@@ -126,6 +126,9 @@ class WellCode extends Component {
     this.setState({ [name]: value })
   }`
 		const baseCode = `
+import React, { Component } from 'react';
+import { Jumbotron, Radio, Checkbox, FormControl, FormGroup, ControlLabel } from 'react-bootstrap';
+
 export default class RenderedForm extends Component {
 	${baseConstructorAndHandleChange}
   render() {
