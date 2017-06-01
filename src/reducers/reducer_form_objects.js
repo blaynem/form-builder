@@ -1,7 +1,7 @@
 import { CREATE_FORM_OBJECTS, UPDATE_FORM_NAME, UPDATE_FORM_TYPE, UPDATE_FORM_DATA } from '../actions'
 
-const initialState = [{"fieldName":"What do you like?","fieldType":"select","fieldData":"things;stuff;friends"},
-{"fieldData":"","fieldType":"text","fieldName":"This is form2"},
+const initialState = [{"fieldName":"What do you like?","fieldType":"radio","fieldData":"things;stuff;friends"},
+{"fieldData":"","fieldType":"textarea","fieldName":"This is form2"},
 {"fieldData":"what;the;heck","fieldType":"checkbox","fieldName":"Haha form 3"}]
 
 export default function formObjects(state = initialState, action){

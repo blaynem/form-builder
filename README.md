@@ -2,8 +2,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 # Form-Builder
 
-Will create forms depending on what fields are chosen. Will then generate a way to copy and paste the component into a persons code.
+Will create forms depending on what fields are chosen. Will then generate a way to copy and paste the component into a persons code. You can test it out in action here.
 
 ### Disclaimer
 
-I don't think the technology is here yet.. But we can try.
+~~I don't think the technology is here yet.. But we can try.~~
+Just kidding there's magic.
