@@ -7,6 +7,7 @@ You can test it out in action **[here](http://blayneformbuilder.surge.sh/)**.
 
 ## Todo
 
+- Add some documentation
 - Add ability to choose if you want to use react-bootstrap or not.
 - Debugging with radio/checkboxes
 - Disclaimer about spaces before/after semi-colon on value input.
