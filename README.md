@@ -14,6 +14,10 @@ You can test it out in action **[here](http://blayneformbuilder.surge.sh/)**.
 - Clean up the code, need to figure out how to remove the comma's, and ideally fix spacing.
 - Style it up so you can import some styles.
 
+### Thanks
+
+Big thanks to [jtmcgrath](https://github.com/jtmcgrath) for contributing to the project.
+
 ### Disclaimer
 
 ~~I don't think the technology is here yet.. But we can try.~~
