@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Well } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
-import templateHandlers from '../templates/templates.js';
+import templateHandlers from '../templates';
 
 class WellCode extends Component {
 	constructor(props){
@@ -25,36 +25,38 @@ class WellCode extends Component {
 
 	render() {
 		let formItems = this.renderGroups()
+// make sure to use spaces instead of tabs if editing any of the strings, otherwise the printed
+// text to the "well" will be formatted really strangely.
 		const baseConstructorAndHandleChange = `
-	constructor(props){
-		super(props)
-		this.handleChange = this.handleChange.bind(this)
-		this.state = {}
-	}
-	// handles changes to the checkbox
-	handleChange(e) {
-		const target = e.target
-		const name = target.name
-		// if the type is radio, will set the state of selectedRadio
-		if (target.type === "radio"){ return this.setState({ [name] : target.value }) }
-		const value = target.type === "checkbox" ? target.checked : target.value
-		// allows me to push new key/values depending on what the user has selected to input
-		this.setState({ [name]: value })
-	}`
+  constructor(props){
+    super(props)
+    this.handleChange = this.handleChange.bind(this)
+    this.state = {}
+  }
+  // handles changes to the checkbox
+  handleChange(e) {
+    const target = e.target
+    const name = target.name
+    // if the type is radio, will set the state of selectedRadio
+    if (target.type === "radio"){ return this.setState({ [name] : target.value }) }
+    const value = target.type === "checkbox" ? target.checked : target.value
+    // allows me to push new key/values depending on what the user has selected to input
+    this.setState({ [name]: value })
+  }`
 		const baseCode = `
 import React, { Component } from 'react';
 import { Jumbotron, Radio, Checkbox, FormControl, FormGroup, ControlLabel } from 'react-bootstrap';
 
 export default class RenderedForm extends Component {
-	${baseConstructorAndHandleChange}
-	render() {
-		console.log(this.state)
-		return (
-			<form>
-			${formItems}
-			</form>
-		)
-	}
+  ${baseConstructorAndHandleChange}
+  render() {
+    console.log(this.state)
+    return (
+      <form>\
+      ${formItems}
+      </form>
+    )
+  }
 }`
 		return (
 			<Well className="row">
