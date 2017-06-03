@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Well, FormControl } from 'react-bootstrap';
+import { Well } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import ClipboardButton from 'react-clipboard.js';
 

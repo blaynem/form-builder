@@ -34,7 +34,7 @@ class FormPicker extends Component {
 
 		// theres probably a better way to do this, but for now.. this is it.
 		while (i < amount){
-			formsArray.push({fieldName: `Form ${i}`, fieldType:"text", fieldData:""})
+			formsArray.push({fieldName: `Form ${i + 1}`, fieldType:"text", fieldData:""})
 			i++
 		}
 
