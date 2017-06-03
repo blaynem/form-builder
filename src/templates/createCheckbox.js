@@ -7,6 +7,8 @@ const createCheckbox = item => `
           <Checkbox
             // inline allows you to render the checkbox inline with other checkboxes
             inline
+            // name is used to determine what element should be checked in state.
+            // the name prop should be similar or the same as the labels text value
             name="${data}"
             onChange={this.handleChange}>
             <p>${data}</p>

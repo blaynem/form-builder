@@ -9,8 +9,7 @@ class WellCode extends Component {
 		super(props)
 
 		this.renderGroups = this.renderGroups.bind(this)
-		// this.displayCode = this.displayCode.bind(this)
-		this.state = { showCode: true }
+		this.state = { showCode: false }
 	}
 	displayCode(){
 		this.setState({ showCode: !this.state.showCode })
@@ -24,7 +23,8 @@ class WellCode extends Component {
 				groups += templateHandlers['undefined'](item, i);
 			}
 		})
-		return groups;
+		// replaces any of the returned commas
+		return groups.replace(/>,/g, '>');
 	}
 
 	render() {
@@ -44,16 +44,20 @@ class WellCode extends Component {
     // if the type is radio, will set the state of selectedRadio
     if (target.type === "radio"){ return this.setState({ [name] : target.value }) }
     const value = target.type === "checkbox" ? target.checked : target.value
-    // allows me to push new key/values depending on what the user has selected to input
+    // allows you to push new key/values depending on what was selected
     this.setState({ [name]: value })
   }`
 		const baseCode = `
+// Comments are here to help determine what is going on, feel free to remove them
 import React, { Component } from 'react';
+// imports all of the potential bootstrap components you might need.
+// Feel free to ones that aren't needed.
 import { Jumbotron, Radio, Checkbox, FormControl, FormGroup, ControlLabel } from 'react-bootstrap';
 
 export default class RenderedForm extends Component {
   ${baseConstructorAndHandleChange}
   render() {
+  	// logs the state so you can test that the imported code is working correctly.
     console.log(this.state)
     return (
       <form>\
