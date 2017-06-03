@@ -9,6 +9,11 @@ class WellCode extends Component {
 		super(props)
 
 		this.renderGroups = this.renderGroups.bind(this)
+		// this.displayCode = this.displayCode.bind(this)
+		this.state = { showCode: true }
+	}
+	displayCode(){
+		this.setState({ showCode: !this.state.showCode })
 	}
 	renderGroups(){
 		let groups = '';
@@ -21,7 +26,6 @@ class WellCode extends Component {
 		})
 		return groups;
 	}
-
 
 	render() {
 		let formItems = this.renderGroups()
@@ -60,7 +64,8 @@ export default class RenderedForm extends Component {
 }`
 		return (
 			<Well className="row">
-				<pre>{baseCode}</pre>
+				<button onClick={() => this.displayCode()}>{this.state.showCode ? "Hide" : "Show"} Code</button>
+				<pre style={{display:this.state.showCode ? "" : "none"}}>{baseCode}</pre>
 			</Well>
 		)
 	}
