@@ -1,7 +1,7 @@
 // make sure to use spaces instead of tabs if editing this, otherwise the printed
 // text to the "well" will be formatted really strangely.
 const createCheckbox = item => `
-        <formGroup className="row">
+        <formGroup className="">
           <h4>${item.fieldName}</h4>\
         ${item.fieldData.split(";").map(data => `
           <Checkbox

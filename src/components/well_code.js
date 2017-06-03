@@ -3,6 +3,7 @@ import { Well, FormControl } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import ClipboardButton from 'react-clipboard.js';
 
+import ComponentView from './component_view';
 import templateHandlers from '../templates';
 
 class WellCode extends Component {
@@ -10,7 +11,7 @@ class WellCode extends Component {
 		super(props)
 
 		this.renderGroups = this.renderGroups.bind(this)
-		this.state = { showCode: true }
+		this.state = { showCode: false }
 	}
 	displayCode(){
 		this.setState({ showCode: !this.state.showCode })
@@ -53,26 +54,35 @@ class WellCode extends Component {
 import React, { Component } from 'react';
 // imports all of the potential bootstrap components you might need.
 // Feel free to ones that aren't needed.
-import { Jumbotron, Radio, Checkbox, FormControl, FormGroup, ControlLabel } from 'react-bootstrap';
+import { Well, Jumbotron, Radio, Checkbox, FormControl, FormGroup, ControlLabel } from 'react-bootstrap';
 
 export default class RenderedForm extends Component {
   ${baseConstructorAndHandleChange}
   render() {
   	// logs the state so you can test that the imported code is working correctly.
     console.log(this.state)
+    const formStyle = {background: "#f5f5f5", border: "1px solid #e3e3e3", borderRadius:"4px"}
     return (
-      <form>\
+      <Well className="container" style={formStyle}>\
       ${formItems}
-      </form>
+      </Well>
     )
   }
 }`
 		return (
-			<Well className="row">
-				<button onClick={() => this.displayCode()}>{this.state.showCode ? "Hide" : "Show"} Code</button>
-				<ClipboardButton data-clipboard-text={baseCode}>Copy Code</ClipboardButton>
-				<pre id="code-block" style={{display:this.state.showCode ? "" : "none"}}>{baseCode}</pre>
-			</Well>
+			<div>
+				<div style={{textAlign:"center"}}>
+					<h3 style={{textAlign:"center", margin:0}}>Form Demo</h3>
+					<button onClick={() => this.displayCode()} style={{marginBottom:"5px"}}>Show {this.state.showCode ? "Layout" : "Code"}</button>
+					<ClipboardButton data-clipboard-text={baseCode}>Copy Code</ClipboardButton>
+				</div>
+				<Well className="row">
+					<div style={{display:(this.state.showCode ? "none" : "")}}>
+						<ComponentView thing={formItems}/>
+					</div>
+					<pre id="code-block" style={{display:(this.state.showCode ? "" : "none")}}>{baseCode}</pre>
+				</Well>
+			</div>
 		)
 	}
 }

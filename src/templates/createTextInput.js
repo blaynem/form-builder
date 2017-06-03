@@ -1,10 +1,8 @@
 // make sure to use spaces instead of tabs if editing this, otherwise the printed
 // text to the "well" will be formatted really strangely.
 const createTextInput = item => `
-        <formGroup className="row">
-          <ControlLabel>
-            <h4>${item.fieldName}</h4>
-          </ControlLabel>
+        <formGroup className="">
+          <h4>${item.fieldName}</h4>
           <FormControl
             type="${item.fieldType}"
             // name is used to determine what text form is being edited
