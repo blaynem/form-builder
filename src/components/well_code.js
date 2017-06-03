@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Well } from 'react-bootstrap';
+import { Well, FormControl } from 'react-bootstrap';
 import { connect } from 'react-redux';
+import ClipboardButton from 'react-clipboard.js';
 
 import templateHandlers from '../templates';
 
@@ -9,7 +10,7 @@ class WellCode extends Component {
 		super(props)
 
 		this.renderGroups = this.renderGroups.bind(this)
-		this.state = { showCode: false }
+		this.state = { showCode: true }
 	}
 	displayCode(){
 		this.setState({ showCode: !this.state.showCode })
@@ -69,7 +70,8 @@ export default class RenderedForm extends Component {
 		return (
 			<Well className="row">
 				<button onClick={() => this.displayCode()}>{this.state.showCode ? "Hide" : "Show"} Code</button>
-				<pre style={{display:this.state.showCode ? "" : "none"}}>{baseCode}</pre>
+				<ClipboardButton data-clipboard-text={baseCode}>Copy Code</ClipboardButton>
+				<pre id="code-block" style={{display:this.state.showCode ? "" : "none"}}>{baseCode}</pre>
 			</Well>
 		)
 	}
