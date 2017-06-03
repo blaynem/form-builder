@@ -7,6 +7,7 @@ You can test it out in action **[here](http://blayneformbuilder.surge.sh/)**.
 
 ## Todo
 
+- Add button to show/hide the code
 - Add some documentation
 - Add ability to choose if you want to use react-bootstrap or not.
 - Debugging with radio/checkboxes
