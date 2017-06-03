@@ -7,8 +7,8 @@ import FormType from '../container/form_type';
 class ComponentView extends Component {
 	renderForms(){
 		const { formObjects } = this.props
+		if (this.props.formObjects.length === 0) return <div><h4>Create some elements!</h4></div>
 		return formObjects.map((object, i) => {
-			// console.log(object)
 			return (
 				<FormGroup key={object + i}>
 					<ControlLabel>

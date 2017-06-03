@@ -78,7 +78,7 @@ export default class RenderedForm extends Component {
 				</div>
 				<Well className="row">
 					<div style={{display:(this.state.showCode ? "none" : "")}}>
-						<ComponentView thing={formItems}/>
+						<ComponentView/>
 					</div>
 					<pre id="code-block" style={{display:(this.state.showCode ? "" : "none")}}>{baseCode}</pre>
 				</Well>
