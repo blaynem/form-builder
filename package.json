@@ -5,6 +5,7 @@
   "dependencies": {
     "react": "^15.5.4",
     "react-bootstrap": "^0.31.0",
+    "react-clipboard.js": "^1.1.2",
     "react-dom": "^15.5.4",
     "react-element-to-jsx-string": "^8.0.0",
     "react-redux": "^5.0.5",

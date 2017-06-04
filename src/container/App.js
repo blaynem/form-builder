@@ -13,8 +13,8 @@ class App extends Component {
     return (
       <div className="container">
         <div className="row">
-          <h4 style={madeByStyles}>Application created by: <a href="http://blaynemarjama.surge.sh" target="_blank">Blayne Marjama</a></h4>
-          <h4 style={madeByStyles}>Source Code Available on <a href="https://github.com/blaynem/form-builder" target="_blank">Github</a></h4>
+          <h4 style={madeByStyles}>Application created by: <a href="http://blaynemarjama.surge.sh" target="_blank" rel="noopener noreferrer">Blayne Marjama</a></h4>
+          <h4 style={madeByStyles}>Source Code Available on <a href="https://github.com/blaynem/form-builder" target="_blank" rel="noopener noreferrer">Github</a></h4>
         </div>
         <div className="row">
           <Jumbotron>
