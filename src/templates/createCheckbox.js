@@ -1,9 +1,8 @@
 // make sure to use spaces instead of tabs if editing this, otherwise the printed
 // text to the "well" will be formatted really strangely.
-const createCheckbox = item => `
-        <formGroup className="">
-          <h4>${item.fieldName}</h4>\
-        ${item.fieldData.split(";").map(data => `
+import formGroup from "./formGroup";
+
+const createCheckbox = item => formGroup(item.fieldName, item.fieldData.split(";").map(data => `
           <Checkbox
             // inline allows you to render the checkbox inline with other checkboxes
             inline
@@ -12,7 +11,6 @@ const createCheckbox = item => `
             name="${data}"
             onChange={this.handleChange}>
             <p>${data}</p>
-          </Checkbox>`)}
-        </formGroup>`;
+          </Checkbox>`).join(""));
 
 export default createCheckbox;

@@ -59,7 +59,7 @@ import { Well, Jumbotron, Radio, Checkbox, FormControl, FormGroup, ControlLabel 
 export default class RenderedForm extends Component {
   ${baseConstructorAndHandleChange}
   render() {
-  	// logs the state so you can test that the imported code is working correctly.
+    // logs the state so you can test that the imported code is working correctly.
     console.log(this.state)
     const formStyle = {background: "#f5f5f5", border: "1px solid #e3e3e3", borderRadius:"4px"}
     return (
