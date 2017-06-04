@@ -11,11 +11,17 @@ class WellCode extends Component {
 		super(props)
 
 		this.renderGroups = this.renderGroups.bind(this)
-		this.state = { showCode: false }
+		this.state = { showCode: false, showComments: true }
 	}
+
 	displayCode(){
 		this.setState({ showCode: !this.state.showCode })
 	}
+
+	displayComments() {
+		this.setState({ showComments: !this.state.showComments })
+	}
+
 	renderGroups(){
 		let groups = '';
 		this.props.formObjects.forEach((item, i) =>{
@@ -49,7 +55,8 @@ class WellCode extends Component {
     // allows you to push new key/values depending on what was selected
     this.setState({ [name]: value })
   }`
-		const baseCode = `
+	
+		let baseCode = `
 // Comments are here to help determine what is going on, feel free to remove them
 import React, { Component } from 'react';
 // imports all of the potential bootstrap components you might need.
@@ -69,11 +76,18 @@ export default class RenderedForm extends Component {
     )
   }
 }`
+		if (!this.state.showComments) {
+			baseCode = baseCode.replace(/\n\s*\/\/.*/g, '');
+		}
+
+		const toggleComments = this.state.showCode ? <button onClick={() => this.displayComments()} style={{marginBottom:"5px"}}>{this.state.showComments ? "Hide" : "Show"} Comments</button> : null;
+
 		return (
 			<div>
 				<div style={{textAlign:"center"}}>
 					<h3 style={{textAlign:"center", margin:0}}>Form Demo</h3>
 					<button onClick={() => this.displayCode()} style={{marginBottom:"5px"}}>Show {this.state.showCode ? "Layout" : "Code"}</button>
+					{toggleComments}
 					<ClipboardButton data-clipboard-text={baseCode}>Copy Code</ClipboardButton>
 				</div>
 				<Well className="row">
