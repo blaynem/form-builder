@@ -1,8 +1,8 @@
 // make sure to use spaces instead of tabs if editing this, otherwise the printed
 // text to the "well" will be formatted really strangely.
-const createTextInput = item => `
-        <formGroup className="">
-          <h4>${item.fieldName}</h4>
+import formGroup from "./formGroup";
+
+const createTextInput = item => formGroup(item.fieldName, `
           <FormControl
             type="${item.fieldType}"
             // name is used to determine what text form is being edited
@@ -14,7 +14,6 @@ const createTextInput = item => `
             value={this.state.formInputValue}
             onChange={this.handleChange}
             placeholder="This text will not be saved"
-          />
-        </formGroup>`;
+          />`);
 
 export default createTextInput;

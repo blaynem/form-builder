@@ -1,9 +1,8 @@
 // make sure to use spaces instead of tabs if editing this, otherwise the printed
 // text to the "well" will be formatted really strangely.
-const createRadio = (item, i) => `
-        <formGroup className="">
-          <h4>${item.fieldName}</h4>\
-        ${item.fieldData.split(";").map(data => `
+import formGroup from "./formGroup";
+
+const createRadio = (item, i) => formGroup(item.fieldName, item.fieldData.split(";").map(data => `
           <Radio
             inline
             // name is used to determine what radio state should be chosen.
@@ -17,7 +16,6 @@ const createRadio = (item, i) => `
             checked={this.state.selectedRadio${i} === "${data}"}
             onChange={this.handleChange}>
             <p>${data}</p>
-          </Radio>`)}
-        </formGroup>`;
+          </Radio>`).join(""));
 
 export default createRadio;
