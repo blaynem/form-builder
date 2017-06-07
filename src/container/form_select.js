@@ -23,11 +23,12 @@ class FormSelect extends Component {
 	renderSelectOptions(){
 		const labels = this.props.labels.split(";")
 		return labels.map((label, index) => {
-			if (label === "" || label === " "){
-				label = "Empty"
+			let trimLabel = label.trim()
+			if (trimLabel === ""){
+				trimLabel = "Empty"
 			}
 			return (
-					<option key={label + index} value={label}>{label}</option>
+					<option key={trimLabel + index} value={trimLabel}>{trimLabel}</option>
 			)
 		})
 	}

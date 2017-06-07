@@ -10,12 +10,12 @@ const createRadio = (item, i) => formGroup(item.fieldName, item.fieldData.split(
             name="selectedRadio${i}"
             // value is used to determine what radio element should be chosen in state.
             // the value prop should be similar or the same as the labels text value
-            value="${data}"
+            value="${data.trim()}"
             // returns true or false, changes depending on what radio button is clicked.
             // element in quotes should always be the same as the radio buttons value prop
-            checked={this.state.selectedRadio${i} === "${data}"}
+            checked={this.state.selectedRadio${i} === "${data.trim()}"}
             onChange={this.handleChange}>
-            <p>${data}</p>
+            <p>${data.trim()}</p>
           </Radio>`).join(""));
 
 export default createRadio;

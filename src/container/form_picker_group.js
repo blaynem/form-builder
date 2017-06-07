@@ -12,7 +12,7 @@ class FormPickerGroup extends Component {
 
 		this.handleChange = this.handleChange.bind(this)
 		this.saveFormElement = this.saveFormElement.bind(this)
-		this.state = { formSelectType: "text", formName: `Form ${this.props.id + 1}`, labels: "barbie; steve" }
+		this.state = { formSelectType: "text", formName: `Form ${this.props.id + 1}`, labels: "yes; no; maybe" }
 	}
 
 	handleChange(e) {

@@ -23,18 +23,19 @@ class FormRadio extends Component {
 	renderRadioButtons(){
 		const labels = this.props.labels.split(";")
 		return labels.map((label, index) => {
-			if (label === "" || label === " "){
-				label = "Empty"
+			let trimLabel = label.trim()
+			if (trimLabel === ""){
+				trimLabel = "Empty"
 			}
 			return (
 				<Radio
 					inline
-					key={label + index}
-					name={label}
-					value={label}
-					checked={this.state.selectedRadio === label}
+					key={trimLabel + index}
+					name={trimLabel}
+					value={trimLabel}
+					checked={this.state.selectedRadio === trimLabel}
 					onChange={this.handleChange}>
-				  {label}
+				  {trimLabel}
 				</Radio>
 			)
 		})

@@ -24,16 +24,17 @@ class FormCheckbox extends Component {
 	renderCheckboxes(){
 		const labels = this.props.labels.split(";")
 		return labels.map((label, index) => {
-			if (label === "" || label === " "){
-				label = "Empty"
+			let trimLabel = label.trim()
+			if (trimLabel === ""){
+				trimLabel = "Empty"
 			}
 			return (
 				<Checkbox
-					key={label + index}
+					key={trimLabel + index}
 					inline
-					name={label}
+					name={trimLabel}
 					onChange={this.handleChange}>
-					{label}
+					{trimLabel}
 				</Checkbox>
 			)
 		})

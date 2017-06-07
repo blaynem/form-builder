@@ -33,8 +33,9 @@ class FormPicker extends Component {
 		let formsArray = []
 
 		// theres probably a better way to do this, but for now.. this is it.
+		// fieldData should be the same thing as this.state.labels inside the form_picker_group.js file
 		while (i < amount){
-			formsArray.push({fieldName: `Form ${i + 1}`, fieldType:"text", fieldData:""})
+			formsArray.push({fieldName: `Form ${i + 1}`, fieldType:"text", fieldData:"yes; no; maybe"})
 			i++
 		}
 

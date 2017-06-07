@@ -60,7 +60,7 @@ class WellCode extends Component {
 // Comments are here to help determine what is going on, feel free to remove them
 import React, { Component } from 'react';
 // imports all of the potential bootstrap components you might need.
-// Feel free to ones that aren't needed.
+// Feel free to remove ones that aren't needed.
 import { Well, Jumbotron, Radio, Checkbox, FormControl, FormGroup, ControlLabel } from 'react-bootstrap';
 
 export default class RenderedForm extends Component {
