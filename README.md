@@ -9,11 +9,11 @@ You can test it out in action **[here](http://blayneformbuilder.surge.sh/)**.
 
 - Add ability to choose if you want to use react-bootstrap or not.
 - Debugging with radio/checkboxes
-- Disclaimer about spaces before/after semi-colon on value input.
 - Style it up so you can import some styles.
 - ~~Clean up the code, need to figure out how to remove the comma's, and ideally fix spacing.~~
 - ~~Add some documentation~~
 - ~~Add button to show/hide the code~~
+- ~~Disclaimer about spaces before/after semi-colon on value input.~~
 
 ### Thanks
 

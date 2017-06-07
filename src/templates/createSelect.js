@@ -4,8 +4,9 @@ import formGroup from "./formGroup";
 
 const createSelect = (item, i) => {
 	let fieldData = item.fieldData.split(";").map(data => `
+            <option value="${data.trim()}"
             // value prop should always be similar or equal to the labels text value
-            <option value="${data.trim()}">${data.trim()}</option>`).join("");
+            >${data.trim()}</option>`).join("");
   
 	return formGroup(item.fieldName, `
           <FormControl
