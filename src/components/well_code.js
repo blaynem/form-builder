@@ -68,6 +68,7 @@ export default class RenderedForm extends Component {
   render() {
     // logs the state so you can test that the imported code is working correctly.
     console.log(this.state)
+    // sets the forms style to be similar to what you originally saw it as. Feel free to change this.
     const formStyle = {background: "#f5f5f5", border: "1px solid #e3e3e3", borderRadius:"4px"}
     return (
       <Well className="container" style={formStyle}>\
