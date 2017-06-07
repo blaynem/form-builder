@@ -8,9 +8,9 @@ const createCheckbox = item => formGroup(item.fieldName, item.fieldData.split(";
             inline
             // name is used to determine what element should be checked in state.
             // the name prop should be similar or the same as the labels text value
-            name="${data}"
+            name="${data.trim()}"
             onChange={this.handleChange}>
-            <p>${data}</p>
+            <p>${data.trim()}</p>
           </Checkbox>`).join(""));
 
 export default createCheckbox;
